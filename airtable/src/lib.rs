@@ -164,7 +164,7 @@ impl Airtable {
         view: &str,
         fields: Vec<&str>,
     ) -> Result<Vec<Record<T>>> {
-        let mut params = vec![("pageSize", "100".to_string()), ("view", view.to_string())];
+        let mut params = vec![("pageSize", "100".to_string()), ("view", view.to_string()), ("returnFieldsByFieldId", "true".to_string())];
         for field in fields {
             params.push(("fields[]", field.to_string()));
         }
