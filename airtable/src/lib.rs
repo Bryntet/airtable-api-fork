@@ -180,9 +180,8 @@ impl Airtable {
             }
         };
 
-        dbg!(resp.json::<serde_json::Value>().await);
         // Try to deserialize the response.
-        /*let mut r: APICall<T> = resp.json().await?;
+        let mut r: APICall<T> = resp.json().await?;
 
         let mut records = r.records;
 
@@ -217,9 +216,9 @@ impl Airtable {
             records.append(&mut r.records);
 
             offset = r.offset;
-        }*/
+        }
 
-        Ok(vec![])
+        Ok(records)
     }
 
     pub fn pages<T: DeserializeOwned>(&self, table: &str, view: &str, fields: Vec<&str>) -> Pages<T> {
