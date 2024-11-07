@@ -198,6 +198,7 @@ impl Airtable {
                     ("pageSize", "100".to_string()),
                     ("view", view.to_string()),
                     ("offset", offset),
+                    ("returnFieldsByFieldId", "true".to_string())
                 ]),
             )?;
 
