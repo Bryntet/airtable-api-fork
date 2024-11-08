@@ -228,7 +228,7 @@ impl Airtable {
     /// Get record from a table.
     pub async fn get_record<T: DeserializeOwned>(&self, table: &str, record_id: &str) -> Result<Record<T>> {
         // Build the request.
-        let request = self.request(Method::GET, format!("{table}/{record_id}"), (), Some(("returnFieldsByFieldId", "true")))?;
+        let request = self.request(Method::GET, format!("{table}/{record_id}"), (), Some(vec![("returnFieldsByFieldId", "true")]))?;
 
         let resp = self.client.execute(request).await?;
         match resp.status() {
